@@ -180,7 +180,7 @@ addEventListener('error',function(){try{rescue()}catch(e){}});
 /* Los datos del salón, hora y ubicación están en code.gs (INFO) y solo se entregan a invitados verificados. */
 const C={name:'Alejandro',dateISO:'2026-11-21'/* solo la fecha visible; cámbiala a 2026-12-11 */,
 spotify:'https://open.spotify.com/playlist/7iPmYZdCoHy91n3OlKN3g5?si=bZ3gFeZiRfqyE9T_rUJidQ&utm_source=copy-link&pt=00b2cca1688d9352953053586d58ba57&pi=44L20dxlSva63',
-script:'https://script.google.com/macros/s/AKfycbyMOi2CB2RozvMegxHGHCF7sr6JAq4T7Pnai3cEEnVrTLUni7hnEK00kFvPxCcmE1_9/exec',phone:'59169526914',icon:'https://i.imgur.com/Ofcaqug.png'};
+script:'https://script.google.com/macros/s/AKfycbwRA4vYa7WzgGmCon0zbfazcJM6adWszpnO31PXICTdw_Uwa86u59yNZvyUbh5mdNQN/exec',phone:'59169526914',icon:'https://i.imgur.com/Ofcaqug.png'};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const OK=!C.script.startsWith('PEGAR'),HEART='\u2764\uFE0F',wait=t=>new Promise(r=>setTimeout(r,t));
