@@ -8,7 +8,7 @@
 <meta property="og:title" content="Estás invitado ✦ Graduación de Alejandro">
 <meta property="og:description" content="Una noche de gala para cerrar un capítulo. Confirma tu asistencia.">
 <!-- IMPORTANTE: cambia REPO por el nombre de tu repositorio y sube og.png (WhatsApp necesita URL absoluta) -->
-<meta property="og:image" content="https://atri-soft.github.io/Atri-Soft/og.png">
+<meta property="og:image" content="https://atri-soft.github.io/GraduacionAlejandro/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="icon.png"><link rel="apple-touch-icon" href="icon.png">
@@ -179,7 +179,7 @@ footer a{display:inline-block;margin-top:16px;color:var(--g2);font-size:12px;let
 /* Los datos del salón, hora y ubicación están en code.gs (INFO) y solo se entregan a invitados verificados. */
 const C={name:'Alejandro',dateISO:'2026-11-21'/* solo la fecha visible; cámbiala a 2026-12-11 */,
 spotify:'https://open.spotify.com/playlist/7iPmYZdCoHy91n3OlKN3g5?si=bZ3gFeZiRfqyE9T_rUJidQ&utm_source=copy-link&pt=00b2cca1688d9352953053586d58ba57&pi=44L20dxlSva63',
-script:'https://script.google.com/macros/s/AKfycbwOoPLXnNeb0HVuGHwW1snq45gowRT_aovX-t-vCwVoDaJbNyeKhO5Ltqvh3LSlp7JA/exec',phone:'59169536914',icon:'https://i.imgur.com/Ofcaqug.png'};
+script:'https://script.google.com/macros/s/AKfycbzZ6rdee0L2qmH4R5YkGq_swy5NxwYzWdZUKv9m-4EMiShweE5HfK_-7bqGHZXl_3w0/exec',phone:'59169536914',icon:'https://i.imgur.com/Ofcaqug.png'};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const OK=!C.script.startsWith('PEGAR'),HEART='\u2764\uFE0F',wait=t=>new Promise(r=>setTimeout(r,t));
@@ -272,12 +272,12 @@ function setInfo(i){if(i){info=i;ls('inf',i)}else if(!isSI()){info=null;ls('inf'
 async function sync(){if(!OK||!me)return;try{const r=await get('?action=guest&id='+encodeURIComponent(me.id));if(!r.ok)return;if(r.guest){const o=JSON.stringify([me,info]);me=Object.assign(me,{name:r.guest.name,status:r.guest.status,num:r.guest.num,acomp:r.guest.acomp});ls('ga',me);setInfo(r.info);if(o!==JSON.stringify([me,info])){if(!chg)rs();fill();if(view==='alb')albRender()}}else{me=null;info=null;ls('ga',null);ls('inf',null);rs();fill()}}catch(e){}}
 /* ===== RSVP ===== */
 const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
-const BAD=['puta','puto','mierda','verga','pene','culo','cojudo','carajo','pendejo','idiota','estupido','imbecil','concha','chucha','joder','mrd','gilipollas','cabron','maricon','zorra','pija','coño','cono','hdp','ctm'];
+const BAD=['puta','puto','mierda','verga','pene','culo','cojudo','carajo','pendejo','idiota','estupido','imbecil','joder','mrd','gilipollas','cabron','maricon','zorra','pija','hdp','ctm'];
 function nameErr(v){const n=norm(v),w=n.split(' ');
 if(!/^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]+$/.test(v))return 'Usa solo letras, sin números ni símbolos.';
 if(w.length<2)return 'Escribe nombre y apellido.';
 if(w.some(x=>x.length<2||!/[aeiouy]/.test(x)||/(.)\1{2,}/.test(x)||/[^aeiou\s]{5,}/.test(x)||/(asdf|qwer|zxcv|sdfg|wert|ertz|hjkl|qaz|wsx|jkl)/.test(x))||w.every(x=>x===w[0]))return 'Escribe un nombre real, por favor.';
-if(w.some(x=>BAD.includes(x))||BAD.some(b=>b.length>4&&n.includes(b)))return 'Ese nombre no es válido.';
+if(w.some(x=>BAD.includes(x))||BAD.some(b=>b.length>6&&n.includes(b)))return 'Ese nombre no es válido.';
 return ''}
 const fmtName=s=>s.trim().replace(/\s+/g,' ').split(' ').map(x=>cap(x.toLowerCase())).join(' ');
 function capIn(el){el.oninput=()=>{const p=el.selectionStart;el.value=el.value.replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]/g,'').replace(/ {2,}/g,' ').replace(/(^|\s)(\S)/g,(m,a,b)=>a+b.toUpperCase());try{el.setSelectionRange(p,p)}catch(e){}}}
